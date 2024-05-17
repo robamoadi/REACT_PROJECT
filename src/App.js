@@ -1,16 +1,18 @@
 import './App.css';
 import React from 'react';
 import Flags from "./components/Country_flags"
+import FlagFilter from './components/FlagFilter';
 
 class App extends React.Component {
 
   state = {
     flags:[
-      {country_name: "United States" , population: "331 million" , continent: "North America" , capital:"washington D.C" , id:1},
-      {country_name: "Brazil" , population: "213 million" , continent: "South America" , capital:"Brasilia" , id:2},
-      {country_name: "Spain" , population: "47 million" , continent: "Europe" , capital:"Madrid" , id:3},
-      {country_name: "Japan" , population: "125 million" , continent: "Asia" , capital:"Tokyo" , id:4}
-    ]
+      {country_name: "United States" , population: 331000000 , continent: "North America" , capital:"washington D.C" , id:1},
+      {country_name: "Brazil" , population: 213000000  , continent: "South America" , capital:"Brasilia" , id:2},
+      {country_name: "Spain" , population: 47000000 , continent: "Europe" , capital:"Madrid" , id:3},
+      {country_name: "Japan" , population: 125000000  , continent: "Asia" , capital:"Tokyo" , id:4}
+    ],
+    filter_population : 0
   }
 
   delete_contry = (_id) => {
@@ -21,12 +23,19 @@ class App extends React.Component {
     })
   }
 
+  setfilter = (filter_population) =>{
+    this.setState({
+      filter_population
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
         <h1>WORLD FLAGS</h1>
-        <Flags flags = {this.state.flags} delete_contry={this.delete_contry} />
+        <FlagFilter setfilter = {this.setfilter}/>
+        <Flags flags = {this.state.flags} delete_contry={this.delete_contry} filter_population={this.state.filter_population} />
         </header>
       </div>
     );
