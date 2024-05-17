@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import Garage from './components/Garage'
+import Garage from './components/Garage';
+import CarFilter from './components/CarFilter';
 
 class App extends Component {
 
@@ -9,7 +10,8 @@ class App extends Component {
       {brand : "Honda" , modal: 'CIVIC' , color : 'lightblue', year: 2024,coast : 150000, id : 1},
       {brand : "Ferrari" , modal: 'Testa rossa' , color : 'lightpink', year: 2020 ,coast : 500000,  id:2},
       {brand : "Chevrolet" , modal: 'CIVIC' , color : 'white', year: 2023, coast : 100000, id:3},
-    ]
+    ],
+    filte_by_year : 0
   }
 
   deleteCar = (_id) =>{
@@ -18,6 +20,12 @@ class App extends Component {
     console.log(filtered_cars);
     this.setState({
       cars : filtered_cars
+    })
+  }
+
+  setFilter = (filte_by_year) =>{
+    this.setState({
+      filte_by_year
     })
   }
 
@@ -31,7 +39,8 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
       <h1>Garage</h1>
-      <Garage cars = {this.state.cars} deleteCar={this.deleteCar} addYear={this.addYear}/>
+      <CarFilter setFilter={this.setFilter} />
+      <Garage cars = {this.state.cars} deleteCar={this.deleteCar} addYear={this.addYear} filte_by_year={this.state.filte_by_year}/>
       </header>
     </div>
   );
