@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import './App.css';
 import Garage from './components/Garage';
 import CarFilter from './components/CarFilter';
+import NewCar from './components/NewCar';
 
 class App extends Component {
+
+  static car_seq_next = 4
 
   state ={
     cars :[
@@ -29,6 +32,14 @@ class App extends Component {
     })
   }
 
+  addCar = (_car) => {
+    const new_cars = [...this.state.cars , {..._car , id : App.car_seq_next++}]
+    console.log(new_cars);
+    this.setState({
+      cars : new_cars
+    })
+  }
+
   addYear = () =>{
     const new_year = this.setState({year : this.state.cars.year +1})
 
@@ -39,6 +50,7 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
       <h1>Garage</h1>
+      <NewCar addCar={this.addCar}/>
       <CarFilter setFilter={this.setFilter} />
       <Garage cars = {this.state.cars} deleteCar={this.deleteCar} addYear={this.addYear} filte_by_year={this.state.filte_by_year}/>
       </header>

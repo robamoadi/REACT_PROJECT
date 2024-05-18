@@ -7,6 +7,7 @@ state ={
 }
 
 handleChange = (e) =>{
+    //console.log(e.target.value);
     this.setState({
         filter_by_year: e.target.value
     })
@@ -16,7 +17,7 @@ handleChange = (e) =>{
         return (
             <div>
             <p>Filter by year: 
-            <input type="number" name="filter" value={this.state.filter_by_year} onChange={this.handleChange}/>
+            <input type="number" name="filter" placeholder="year" onChange={this.handleChange}/>
             </p>
             </div>
            
