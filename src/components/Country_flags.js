@@ -4,7 +4,7 @@ import Flag from './Flag';
 
 class Flags extends React.Component{
     render(){
-       //console.log(this.props);
+       console.log(this.props);
 
         const flags_list = this.props.flags.filter(flag => flag.population >= this.props.filter_population)
         .map(flag => 

@@ -1,9 +1,12 @@
 import './App.css';
 import React from 'react';
 import Flags from "./components/Country_flags"
-import FlagFilter from './components/FlagFilter';
+import FlagFilter from './components/FlagFilter'; 
+import AddCountry from './components/AddCountry';
 
 class App extends React.Component {
+
+  static flag_next_seq = 5
 
   state = {
     flags:[
@@ -29,11 +32,19 @@ class App extends React.Component {
     })
   }
 
+  addCountry = (_contry) =>{
+    const new_contry = [...this.state.flags , {..._contry , id: App.flag_next_seq++}]
+    this.setState({
+      flags : new_contry
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
         <h1>WORLD FLAGS</h1>
+        <AddCountry addCountry={this.addCountry} />
         <FlagFilter setfilter = {this.setfilter}/>
         <Flags flags = {this.state.flags} delete_contry={this.delete_contry} filter_population={this.state.filter_population} />
         </header>
