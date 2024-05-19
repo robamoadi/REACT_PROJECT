@@ -2,13 +2,13 @@ import React from 'react';
 
 class FlagFilter extends React.Component {
 
-    state={
-        filter_population : 0
+    state = {
+        filter_population: 0
     }
 
-    handleChange = (e) =>{
+    handleChange = (e) => {
         this.setState({
-            filter_population : e.target.value
+            filter_population: e.target.value
         })
         this.props.setfilter(e.target.value)
     }
@@ -17,9 +17,8 @@ class FlagFilter extends React.Component {
 
         return (
             <div>
-            <p>Filter:
-            <input type='number' placeholder='minimal population' onChange={this.handleChange}/>
-            </p>
+                <p >Filter By Population<input type='number' placeholder='minimal population'
+                    onChange={this.handleChange} style={{ marginTop: '7px' }} /></p>
             </div>
         )
     }
