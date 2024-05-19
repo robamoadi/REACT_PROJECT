@@ -14,7 +14,8 @@ class App extends Component {
       {brand : "Ferrari" , modal: 'Testa rossa' , color : 'lightpink', year: 2020 ,coast : 500000,  id:2},
       {brand : "Chevrolet" , modal: 'CIVIC' , color : 'white', year: 2023, coast : 100000, id:3},
     ],
-    filte_by_year : 0
+    filter_by_year : 0,
+    filter_by_coast:0
   }
 
   deleteCar = (_id) =>{
@@ -26,10 +27,8 @@ class App extends Component {
     })
   }
 
-  setFilter = (filte_by_year) =>{
-    this.setState({
-      filte_by_year
-    })
+  setFilter = (filter) =>{
+    this.setState(filter)
   }
 
   addCar = (_car) => {
@@ -52,7 +51,7 @@ class App extends Component {
       <h1>Garage</h1>
       <NewCar addCar={this.addCar}/>
       <CarFilter setFilter={this.setFilter} />
-      <Garage cars = {this.state.cars} deleteCar={this.deleteCar} addYear={this.addYear} filte_by_year={this.state.filte_by_year}/>
+      <Garage cars = {this.state.cars} deleteCar={this.deleteCar} addYear={this.addYear} filte_by_year={this.state.filter_by_year} filter_by_coast={this.state.filter_by_coast}/>
       </header>
     </div>
   );
