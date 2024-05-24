@@ -1,0 +1,18 @@
+.post img {
+    position: absolute;
+    top: 20px;
+    left: -100px;
+    opacity: 0.6;
+}
+
+.post {
+    overflow: hidden;
+    padding-left: -80px;
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: left;
+}
+
+.hi{
+    text-align: center;
+}
