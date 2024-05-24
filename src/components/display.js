@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { useState , useEffect , useContext } from "react";
 import ColorContext from "../context/ColorContext";
-
 const Display = () => {
 
    // const [color , setColor] = useState('lightseagreen')
